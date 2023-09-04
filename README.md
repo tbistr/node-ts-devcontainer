@@ -22,3 +22,10 @@ yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-co
     "format:fix": "prettier src/**/*.ts --write"
 }
 ```
+
+## Run sample
+
+```bash
+yarn add express @types/express
+yarn dev
+```
