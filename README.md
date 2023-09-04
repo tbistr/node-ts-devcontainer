@@ -3,14 +3,10 @@
 ## Init project
 
 ```bash
+rm package.json
 yarn init
-yarn add -D typescript
-yarn tsc --init --rootDir src --outDir dist
-yarn add express
-yarn add -D @types/node @types/express nodemon ts-node
-
-mkdir src
-touch src/index.ts src/handlers.ts
+yarn add -D typescript nodemon ts-node @types/node eslint prettier
+yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-prettier
 ```
 
 ## Add scripts
@@ -18,7 +14,11 @@ touch src/index.ts src/handlers.ts
 ```json
 "scripts": {
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "build": "tsc",
     "start": "node dist/index.ts",
-    "build": "tsc"
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --fix --ext .ts",
+    "format": "prettier src/**/*.ts",
+    "format:fix": "prettier src/**/*.ts --write"
 }
 ```
