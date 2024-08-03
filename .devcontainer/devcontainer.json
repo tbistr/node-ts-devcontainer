@@ -5,7 +5,9 @@
     },
     "customizations": {
         "vscode": {
-            "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+            "extensions": [
+                "biomejs.biome"
+            ]
         }
     },
     "remoteUser": "node"

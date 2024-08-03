@@ -2,28 +2,45 @@
 
 ## Init project
 
+Reconfigure the project for your needs.
+
 ```bash
-rm package.json
+rm package.json yarn.lock tsconfig.json biome.json
+
+# Init project
 yarn init
-yarn add -D typescript nodemon ts-node @types/node eslint prettier
-yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-prettier
+yarn add -D typescript nodemon ts-node @types/node
+yarn run tsc --init
+
+# Add biome(formatter, linter)
+yarn add -D @biomejs/biome
+yarn run biome init
+
+# Add nodemon(dev server)
+yarn add -D nodemon
 ```
 
 ## Add scripts
 
 ```json
 "scripts": {
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.ts",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --fix --ext .ts",
-    "format": "prettier src/**/*.ts",
-    "format:fix": "prettier src/**/*.ts --write"
+    "lint": "biome lint",
+    "lint:fix": "biome lint --write",
+    "format": "biome format",
+    "format:fix": "biome format --write",
 }
 ```
 
 ## Run sample
+
+Add scripts to `package.json`:
+
+```json
+"scripts": {
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+}
+```
 
 ```bash
 yarn add express @types/express
